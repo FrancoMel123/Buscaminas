@@ -21,23 +21,37 @@ function setup()
 {
   createCanvas(500, 500);   //crea un lienzo o panel donde estará el juego. El primer parámetro es el ancho y el segundo el alto del lienzo.
   laMagiaDeLosProfes();
-
+  
   //Asigno colores que se utilizarán. La fn color solo está definida para el setup y el draw
   COLOR_CASILLERO_CON_MINA = color("#FF0000");
   COLOR_CASILLERO_SIN_MINA = color("#1CC932");
   COLOR_CASILLERO_MARCADO = color("#278EF2");
-
+  
   // Modificar/completar
+  ponerMinaCasillero(4, 5);
 }
 
 
 function draw() {
   if (hizoClick == true)
   {
-    pintarCasillero(columnaPresionada, filaPresionada, COLOR_CASILLERO_SIN_MINA); //pinta el casillero clickeado. Modificar/completar
+    if(mouseButton == LEFT){
+      //pinta el casillero clickeado. Modificar/completar
+    if (tieneMinaCasillero(columnaPresionada,filaPresionada)== true){
+      perder();
+    }
+    else{
 
+      pintarCasillero(columnaPresionada, filaPresionada, COLOR_CASILLERO_SIN_MINA);
+      descubrirCasillero(columnaPresionada,filaPresionada);
+    }
+    }
+    if (mouseButton == LEFT){
 
-    
+      pintarCasillero(3, 0, COLOR_CASILLERO_MARCADO);
+
+    }
+  
     hizoClick = false;  //Indico que ya "procesé" el click del usuario. NO modificar
   }
 }

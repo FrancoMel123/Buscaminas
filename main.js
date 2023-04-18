@@ -1,7 +1,7 @@
 //Constantes del juego
 const COLUMNAS = 5;
 const FILAS = 5;
-const CANTIDAD_MINAS = 5;
+const CANTIDAD_MINAS = 24;
 
 //Variables con colores para los casilleros (NO se pudieron declarar como constantes ya que  la fn color sólo está definida para el setup y el draw)
 var COLOR_CASILLERO_CON_MINA;
@@ -30,73 +30,70 @@ function setup()
   // Modificar/completar
   casillerosSinDescubrir = COLUMNAS * FILAS;
   for(let i = 0; i<CANTIDAD_MINAS; i++){
-
-    ponerMinasTablero()
+    ponerMinasTablero();
   }
 
 }
 
 
 function draw() {
-  if (hizoClick == true)
-  {
+  if (hizoClick == true){
+
     if(mouseButton == LEFT){
-      //pinta el casillero clickeado. Modificar/completar
-    if (tieneMinaCasillero(columnaPresionada,filaPresionada)== true){
+    
+    if (tieneMinaCasillero(columnaPresionada,filaPresionada)){
+      mostrarMinas();
       perder();
     }
     else{
-
       pintarCasillero(columnaPresionada, filaPresionada, COLOR_CASILLERO_SIN_MINA);
       descubrirCasillero(columnaPresionada,filaPresionada);
     }
     
-  
-
-  
+  }
     if (mouseButton == RIGHT){
      pintarCasillero(columnaPresionada, filaPresionada, COLOR_CASILLERO_MARCADO);
-  }
-  if (ganoElJuego() == true){
+    }
+    if (ganoElJuego() == true){
       ganar();
     }
-    
-    hizoClick=false;
-
   }
+  hizoClick=false;
 }
-}
+
 function ganoElJuego()
 {
   if(casillerosSinDescubrir == CANTIDAD_MINAS){
     return true;
   }
   else{
-    return false;   //Esto hace que NUNCA gane el juego. Modificar/completar
-
+    return false;
   }
-  
-
-
-
-
 }
 
 function ponerMinasTablero()
 {
   // Modificar/completar
-  numeroRandomCol = floor(random()*COLUMNAS);
-  numeroRandomFil = floor(random()*FILAS);
-  ponerMinaCasillero(numeroRandomCol,numeroRandomFil)
-
-
-
+  let numeroRandomCol = floor(random()*COLUMNAS);
+  let numeroRandomFil = floor(random()*FILAS);
+  ponerMinaCasillero(numeroRandomCol,numeroRandomFil);
+  console.log(numeroRandomCol);
 
 }
 
 function mostrarMinas()
 {
   // Modificar/completar
+  for(let k = 0; k<COLUMNAS;k++){
+
+    for(let j =0; j<FILAS; j++){
+
+      if(tieneMinaCasillero(k ,j)){ 
+        pintarCasillero(k,j, COLOR_CASILLERO_CON_MINA)
+      }
+        
+    }
+  }
 }
 
 function contarMinasAlrededor(columna, fila)

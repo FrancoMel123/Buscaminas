@@ -1,7 +1,7 @@
 //Constantes del juego
 const COLUMNAS = 5;
 const FILAS = 5;
-const CANTIDAD_MINAS = 24;
+const CANTIDAD_MINAS = 3;
 
 //Variables con colores para los casilleros (NO se pudieron declarar como constantes ya que  la fn color sólo está definida para el setup y el draw)
 var COLOR_CASILLERO_CON_MINA;

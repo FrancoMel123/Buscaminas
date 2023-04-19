@@ -1,8 +1,7 @@
 ## Respuesta punto 6
 el valor de la variable casillerosSinDescubrir al inicio del juego es de 5 * 5
 ## Respuesta punto 8
-La misma cantidad que cuando comenzo
+La cantidad total menos la cantidad de minas
 ## Respuesta punto ...
 
-## Respuesta punto 13
-En el setup
+ 
